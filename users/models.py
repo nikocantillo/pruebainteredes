@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-
+from django.conf import settings
 
 class UserManager(BaseUserManager):
 
@@ -37,3 +37,19 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
 
 
+class Enterprise(models.Model):
+    """modelos de empresas"""
+
+    name = models.CharField(max_length=100, unique=True)
+    adress = models.CharField(max_length=150)
+    phone_number = models.CharField(max_length=12)
+    user= models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Empresa"
