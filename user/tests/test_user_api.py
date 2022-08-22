@@ -104,7 +104,7 @@ class PublicUserApiTests(TestCase):
         response = self.client.post(TOKEN_URL, {'email': 'one', 'password':''})
         self.assertNotIn('token', response.data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-    
+        
 class PrivateUserAPiTests(TestCase):
     """prueba la api en privado"""
     def setUp(self):
