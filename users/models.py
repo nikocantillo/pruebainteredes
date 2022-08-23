@@ -26,8 +26,8 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """modelos personalizad de usuario login con email"""
-    email = models.EmailField(max_length=255, unique=True)
+    """modelos personalizad de usuario login con eail"""
+    email = models.EmailField(max_length=255, umnique=True)
     user_name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
